@@ -1,0 +1,1004 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище priutModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Archive">
+          <Key>
+            <PropertyRef Name="ID_archive" />
+          </Key>
+          <Property Name="ID_archive" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service" Type="bit" Nullable="false" />
+          <Property Name="ID_klienta(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="DataAnim">
+          <Key>
+            <PropertyRef Name="ID_DataAnim" />
+          </Key>
+          <Property Name="ID_DataAnim" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_passport(FK)" Type="int" />
+          <Property Name="ID_MedData(FK)" Type="int" />
+          <Property Name="ID_stay(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="HistoryMedical">
+          <Key>
+            <PropertyRef Name="ID_medical" />
+          </Key>
+          <Property Name="ID_medical" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Diagnosis" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateStart" Type="date" Nullable="false" />
+          <Property Name="Date_End" Type="date" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="ID_klienta" />
+          </Key>
+          <Property Name="ID_klienta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO_kl" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberPhoneKl" Type="int" Nullable="false" />
+          <Property Name="ID_user(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="MedData">
+          <Key>
+            <PropertyRef Name="ID_MedData" />
+          </Key>
+          <Property Name="ID_MedData" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AvailabilityOfVaccinations" Type="varchar" MaxLength="50" />
+          <Property Name="InitialState" Type="varchar" MaxLength="50" />
+          <Property Name="ID_medical(FK)" Type="int" />
+          <Property Name="ID_Sotr(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="ID_passport" />
+          </Key>
+          <Property Name="ID_passport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Name" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Date_reg" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameDol" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="ID_Sotr" />
+          </Key>
+          <Property Name="ID_Sotr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FIO_Str" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="NumberPhoneStr" Type="int" Nullable="false" />
+          <Property Name="ID_user(FK)" Type="int" />
+          <Property Name="ID_Post(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="Stay">
+          <Key>
+            <PropertyRef Name="ID_stay" />
+          </Key>
+          <Property Name="ID_stay" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArrivalDate" Type="date" Nullable="false" />
+          <Property Name="ID_archive(FK)" Type="int" />
+          <Property Name="ID_password(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="StayStr">
+          <Key>
+            <PropertyRef Name="ID_StayStr" />
+          </Key>
+          <Property Name="ID_StayStr" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Vol(FK)" Type="int" Nullable="false" />
+          <Property Name="ID_Sotr(FK)" Type="int" />
+          <Property Name="ID_stay(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="ID_role(FK)" Type="int" />
+        </EntityType>
+        <EntityType Name="Volunteers">
+          <Key>
+            <PropertyRef Name="ID_Vol" />
+          </Key>
+          <Property Name="ID_Vol" Type="int" Nullable="false" />
+          <Property Name="FIO_Vol" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="NumberPhoneVol" Type="int" Nullable="false" />
+          <Property Name="ID_user(FK)" Type="int" />
+        </EntityType>
+        <Association Name="FK_Archive_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_klienta" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="ID_klienta(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataAnim_MedData">
+          <End Role="MedData" Type="Self.MedData" Multiplicity="0..1" />
+          <End Role="DataAnim" Type="Self.DataAnim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedData">
+              <PropertyRef Name="ID_MedData" />
+            </Principal>
+            <Dependent Role="DataAnim">
+              <PropertyRef Name="ID_MedData(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataAnim_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+          <End Role="DataAnim" Type="Self.DataAnim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="ID_passport" />
+            </Principal>
+            <Dependent Role="DataAnim">
+              <PropertyRef Name="ID_passport(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataAnim_Stay">
+          <End Role="Stay" Type="Self.Stay" Multiplicity="0..1" />
+          <End Role="DataAnim" Type="Self.DataAnim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stay">
+              <PropertyRef Name="ID_stay" />
+            </Principal>
+            <Dependent Role="DataAnim">
+              <PropertyRef Name="ID_stay(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klient_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="ID_user(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedData_HistoryMedical">
+          <End Role="HistoryMedical" Type="Self.HistoryMedical" Multiplicity="0..1" />
+          <End Role="MedData" Type="Self.MedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoryMedical">
+              <PropertyRef Name="ID_medical" />
+            </Principal>
+            <Dependent Role="MedData">
+              <PropertyRef Name="ID_medical(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedData_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+          <End Role="MedData" Type="Self.MedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="ID_Sotr" />
+            </Principal>
+            <Dependent Role="MedData">
+              <PropertyRef Name="ID_Sotr(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_Post(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_user(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stay_Archive">
+          <End Role="Archive" Type="Self.Archive" Multiplicity="0..1" />
+          <End Role="Stay" Type="Self.Stay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archive">
+              <PropertyRef Name="ID_archive" />
+            </Principal>
+            <Dependent Role="Stay">
+              <PropertyRef Name="ID_archive(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stay_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+          <End Role="Stay" Type="Self.Stay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="ID_passport" />
+            </Principal>
+            <Dependent Role="Stay">
+              <PropertyRef Name="ID_password(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StayStr_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+          <End Role="StayStr" Type="Self.StayStr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="ID_Sotr" />
+            </Principal>
+            <Dependent Role="StayStr">
+              <PropertyRef Name="ID_Sotr(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StayStr_Stay">
+          <End Role="Stay" Type="Self.Stay" Multiplicity="0..1" />
+          <End Role="StayStr" Type="Self.StayStr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stay">
+              <PropertyRef Name="ID_stay" />
+            </Principal>
+            <Dependent Role="StayStr">
+              <PropertyRef Name="ID_stay(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StayStr_Volunteers">
+          <End Role="Volunteers" Type="Self.Volunteers" Multiplicity="1" />
+          <End Role="StayStr" Type="Self.StayStr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volunteers">
+              <PropertyRef Name="ID_Vol" />
+            </Principal>
+            <Dependent Role="StayStr">
+              <PropertyRef Name="ID_Vol(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_role(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteers_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Volunteers" Type="Self.Volunteers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="Volunteers">
+              <PropertyRef Name="ID_user(FK)" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище priutModelContainer">
+          <EntitySet Name="Archive" EntityType="Self.Archive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataAnim" EntityType="Self.DataAnim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HistoryMedical" EntityType="Self.HistoryMedical" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MedData" EntityType="Self.MedData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stay" EntityType="Self.Stay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StayStr" EntityType="Self.StayStr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Volunteers" EntityType="Self.Volunteers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Archive_Klient" Association="Self.FK_Archive_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataAnim_MedData" Association="Self.FK_DataAnim_MedData">
+            <End Role="MedData" EntitySet="MedData" />
+            <End Role="DataAnim" EntitySet="DataAnim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataAnim_Passport" Association="Self.FK_DataAnim_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="DataAnim" EntitySet="DataAnim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataAnim_Stay" Association="Self.FK_DataAnim_Stay">
+            <End Role="Stay" EntitySet="Stay" />
+            <End Role="DataAnim" EntitySet="DataAnim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klient_User" Association="Self.FK_Klient_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedData_HistoryMedical" Association="Self.FK_MedData_HistoryMedical">
+            <End Role="HistoryMedical" EntitySet="HistoryMedical" />
+            <End Role="MedData" EntitySet="MedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedData_Sotrudniki" Association="Self.FK_MedData_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="MedData" EntitySet="MedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Post" Association="Self.FK_Sotrudniki_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_User" Association="Self.FK_Sotrudniki_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stay_Archive" Association="Self.FK_Stay_Archive">
+            <End Role="Archive" EntitySet="Archive" />
+            <End Role="Stay" EntitySet="Stay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stay_Passport" Association="Self.FK_Stay_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Stay" EntitySet="Stay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StayStr_Sotrudniki" Association="Self.FK_StayStr_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="StayStr" EntitySet="StayStr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StayStr_Stay" Association="Self.FK_StayStr_Stay">
+            <End Role="Stay" EntitySet="Stay" />
+            <End Role="StayStr" EntitySet="StayStr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StayStr_Volunteers" Association="Self.FK_StayStr_Volunteers">
+            <End Role="Volunteers" EntitySet="Volunteers" />
+            <End Role="StayStr" EntitySet="StayStr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteers_User" Association="Self.FK_Volunteers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Volunteers" EntitySet="Volunteers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="priutModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Archive">
+          <Key>
+            <PropertyRef Name="ID_archive" />
+          </Key>
+          <Property Name="ID_archive" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service" Type="Boolean" Nullable="false" />
+          <Property Name="ID_klienta_FK_" Type="Int32" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_Archive_Klient" FromRole="Archive" ToRole="Klient" />
+          <NavigationProperty Name="Stay" Relationship="Self.FK_Stay_Archive" FromRole="Archive" ToRole="Stay" />
+        </EntityType>
+        <EntityType Name="DataAnim">
+          <Key>
+            <PropertyRef Name="ID_DataAnim" />
+          </Key>
+          <Property Name="ID_DataAnim" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_passport_FK_" Type="Int32" />
+          <Property Name="ID_MedData_FK_" Type="Int32" />
+          <Property Name="ID_stay_FK_" Type="Int32" />
+          <NavigationProperty Name="MedData" Relationship="Self.FK_DataAnim_MedData" FromRole="DataAnim" ToRole="MedData" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_DataAnim_Passport" FromRole="DataAnim" ToRole="Passport" />
+          <NavigationProperty Name="Stay" Relationship="Self.FK_DataAnim_Stay" FromRole="DataAnim" ToRole="Stay" />
+        </EntityType>
+        <EntityType Name="HistoryMedical">
+          <Key>
+            <PropertyRef Name="ID_medical" />
+          </Key>
+          <Property Name="ID_medical" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Diagnosis" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_End" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="MedData" Relationship="Self.FK_MedData_HistoryMedical" FromRole="HistoryMedical" ToRole="MedData" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="ID_klienta" />
+          </Key>
+          <Property Name="ID_klienta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO_kl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumberPhoneKl" Type="Int32" Nullable="false" />
+          <Property Name="ID_user_FK_" Type="Int32" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Archive_Klient" FromRole="Klient" ToRole="Archive" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Klient_User" FromRole="Klient" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MedData">
+          <Key>
+            <PropertyRef Name="ID_MedData" />
+          </Key>
+          <Property Name="ID_MedData" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AvailabilityOfVaccinations" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InitialState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_medical_FK_" Type="Int32" />
+          <Property Name="ID_Sotr_FK_" Type="Int32" />
+          <NavigationProperty Name="DataAnim" Relationship="Self.FK_DataAnim_MedData" FromRole="MedData" ToRole="DataAnim" />
+          <NavigationProperty Name="HistoryMedical" Relationship="Self.FK_MedData_HistoryMedical" FromRole="MedData" ToRole="HistoryMedical" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_MedData_Sotrudniki" FromRole="MedData" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="Passport">
+          <Key>
+            <PropertyRef Name="ID_passport" />
+          </Key>
+          <Property Name="ID_passport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Date_reg" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="DataAnim" Relationship="Self.FK_DataAnim_Passport" FromRole="Passport" ToRole="DataAnim" />
+          <NavigationProperty Name="Stay" Relationship="Self.FK_Stay_Passport" FromRole="Passport" ToRole="Stay" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameDol" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sotrudniki_Post" FromRole="Post" ToRole="Sotrudniki" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Sotrudniki">
+          <Key>
+            <PropertyRef Name="ID_Sotr" />
+          </Key>
+          <Property Name="ID_Sotr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FIO_Str" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumberPhoneStr" Type="Int32" Nullable="false" />
+          <Property Name="ID_user_FK_" Type="Int32" />
+          <Property Name="ID_Post_FK_" Type="Int32" />
+          <NavigationProperty Name="MedData" Relationship="Self.FK_MedData_Sotrudniki" FromRole="Sotrudniki" ToRole="MedData" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Sotrudniki_Post" FromRole="Sotrudniki" ToRole="Post" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Sotrudniki_User" FromRole="Sotrudniki" ToRole="User" />
+          <NavigationProperty Name="StayStr" Relationship="Self.FK_StayStr_Sotrudniki" FromRole="Sotrudniki" ToRole="StayStr" />
+        </EntityType>
+        <EntityType Name="Stay">
+          <Key>
+            <PropertyRef Name="ID_stay" />
+          </Key>
+          <Property Name="ID_stay" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_archive_FK_" Type="Int32" />
+          <Property Name="ID_password_FK_" Type="Int32" />
+          <NavigationProperty Name="Archive" Relationship="Self.FK_Stay_Archive" FromRole="Stay" ToRole="Archive" />
+          <NavigationProperty Name="DataAnim" Relationship="Self.FK_DataAnim_Stay" FromRole="Stay" ToRole="DataAnim" />
+          <NavigationProperty Name="Passport" Relationship="Self.FK_Stay_Passport" FromRole="Stay" ToRole="Passport" />
+          <NavigationProperty Name="StayStr" Relationship="Self.FK_StayStr_Stay" FromRole="Stay" ToRole="StayStr" />
+        </EntityType>
+        <EntityType Name="StayStr">
+          <Key>
+            <PropertyRef Name="ID_StayStr" />
+          </Key>
+          <Property Name="ID_StayStr" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Vol_FK_" Type="Int32" Nullable="false" />
+          <Property Name="ID_Sotr_FK_" Type="Int32" />
+          <Property Name="ID_stay_FK_" Type="Int32" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_StayStr_Sotrudniki" FromRole="StayStr" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Stay" Relationship="Self.FK_StayStr_Stay" FromRole="StayStr" ToRole="Stay" />
+          <NavigationProperty Name="Volunteers" Relationship="Self.FK_StayStr_Volunteers" FromRole="StayStr" ToRole="Volunteers" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_role_FK_" Type="Int32" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_Klient_User" FromRole="User" ToRole="Klient" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Sotrudniki" Relationship="Self.FK_Sotrudniki_User" FromRole="User" ToRole="Sotrudniki" />
+          <NavigationProperty Name="Volunteers" Relationship="Self.FK_Volunteers_User" FromRole="User" ToRole="Volunteers" />
+        </EntityType>
+        <EntityType Name="Volunteers">
+          <Key>
+            <PropertyRef Name="ID_Vol" />
+          </Key>
+          <Property Name="ID_Vol" Type="Int32" Nullable="false" />
+          <Property Name="FIO_Vol" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NumberPhoneVol" Type="Int32" Nullable="false" />
+          <Property Name="ID_user_FK_" Type="Int32" />
+          <NavigationProperty Name="StayStr" Relationship="Self.FK_StayStr_Volunteers" FromRole="Volunteers" ToRole="StayStr" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Volunteers_User" FromRole="Volunteers" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Archive_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="Archive" Type="Self.Archive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_klienta" />
+            </Principal>
+            <Dependent Role="Archive">
+              <PropertyRef Name="ID_klienta_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stay_Archive">
+          <End Role="Archive" Type="Self.Archive" Multiplicity="0..1" />
+          <End Role="Stay" Type="Self.Stay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Archive">
+              <PropertyRef Name="ID_archive" />
+            </Principal>
+            <Dependent Role="Stay">
+              <PropertyRef Name="ID_archive_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataAnim_MedData">
+          <End Role="MedData" Type="Self.MedData" Multiplicity="0..1" />
+          <End Role="DataAnim" Type="Self.DataAnim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MedData">
+              <PropertyRef Name="ID_MedData" />
+            </Principal>
+            <Dependent Role="DataAnim">
+              <PropertyRef Name="ID_MedData_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataAnim_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+          <End Role="DataAnim" Type="Self.DataAnim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="ID_passport" />
+            </Principal>
+            <Dependent Role="DataAnim">
+              <PropertyRef Name="ID_passport_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataAnim_Stay">
+          <End Role="Stay" Type="Self.Stay" Multiplicity="0..1" />
+          <End Role="DataAnim" Type="Self.DataAnim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stay">
+              <PropertyRef Name="ID_stay" />
+            </Principal>
+            <Dependent Role="DataAnim">
+              <PropertyRef Name="ID_stay_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedData_HistoryMedical">
+          <End Role="HistoryMedical" Type="Self.HistoryMedical" Multiplicity="0..1" />
+          <End Role="MedData" Type="Self.MedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HistoryMedical">
+              <PropertyRef Name="ID_medical" />
+            </Principal>
+            <Dependent Role="MedData">
+              <PropertyRef Name="ID_medical_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Klient_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Klient" Type="Self.Klient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="Klient">
+              <PropertyRef Name="ID_user_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MedData_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+          <End Role="MedData" Type="Self.MedData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="ID_Sotr" />
+            </Principal>
+            <Dependent Role="MedData">
+              <PropertyRef Name="ID_Sotr_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stay_Passport">
+          <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+          <End Role="Stay" Type="Self.Stay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passport">
+              <PropertyRef Name="ID_passport" />
+            </Principal>
+            <Dependent Role="Stay">
+              <PropertyRef Name="ID_password_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_Post_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_role_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sotrudniki_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="Sotrudniki">
+              <PropertyRef Name="ID_user_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StayStr_Sotrudniki">
+          <End Role="Sotrudniki" Type="Self.Sotrudniki" Multiplicity="0..1" />
+          <End Role="StayStr" Type="Self.StayStr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrudniki">
+              <PropertyRef Name="ID_Sotr" />
+            </Principal>
+            <Dependent Role="StayStr">
+              <PropertyRef Name="ID_Sotr_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StayStr_Stay">
+          <End Role="Stay" Type="Self.Stay" Multiplicity="0..1" />
+          <End Role="StayStr" Type="Self.StayStr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stay">
+              <PropertyRef Name="ID_stay" />
+            </Principal>
+            <Dependent Role="StayStr">
+              <PropertyRef Name="ID_stay_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StayStr_Volunteers">
+          <End Role="Volunteers" Type="Self.Volunteers" Multiplicity="1" />
+          <End Role="StayStr" Type="Self.StayStr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Volunteers">
+              <PropertyRef Name="ID_Vol" />
+            </Principal>
+            <Dependent Role="StayStr">
+              <PropertyRef Name="ID_Vol_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Volunteers_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Volunteers" Type="Self.Volunteers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="ID_user" />
+            </Principal>
+            <Dependent Role="Volunteers">
+              <PropertyRef Name="ID_user_FK_" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="priutEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Archive" EntityType="Self.Archive" />
+          <EntitySet Name="DataAnim" EntityType="Self.DataAnim" />
+          <EntitySet Name="HistoryMedical" EntityType="Self.HistoryMedical" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" />
+          <EntitySet Name="MedData" EntityType="Self.MedData" />
+          <EntitySet Name="Passport" EntityType="Self.Passport" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Sotrudniki" EntityType="Self.Sotrudniki" />
+          <EntitySet Name="Stay" EntityType="Self.Stay" />
+          <EntitySet Name="StayStr" EntityType="Self.StayStr" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="Volunteers" EntityType="Self.Volunteers" />
+          <AssociationSet Name="FK_Archive_Klient" Association="Self.FK_Archive_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Archive" EntitySet="Archive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stay_Archive" Association="Self.FK_Stay_Archive">
+            <End Role="Archive" EntitySet="Archive" />
+            <End Role="Stay" EntitySet="Stay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataAnim_MedData" Association="Self.FK_DataAnim_MedData">
+            <End Role="MedData" EntitySet="MedData" />
+            <End Role="DataAnim" EntitySet="DataAnim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataAnim_Passport" Association="Self.FK_DataAnim_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="DataAnim" EntitySet="DataAnim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataAnim_Stay" Association="Self.FK_DataAnim_Stay">
+            <End Role="Stay" EntitySet="Stay" />
+            <End Role="DataAnim" EntitySet="DataAnim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedData_HistoryMedical" Association="Self.FK_MedData_HistoryMedical">
+            <End Role="HistoryMedical" EntitySet="HistoryMedical" />
+            <End Role="MedData" EntitySet="MedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Klient_User" Association="Self.FK_Klient_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Klient" EntitySet="Klient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedData_Sotrudniki" Association="Self.FK_MedData_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="MedData" EntitySet="MedData" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stay_Passport" Association="Self.FK_Stay_Passport">
+            <End Role="Passport" EntitySet="Passport" />
+            <End Role="Stay" EntitySet="Stay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_Post" Association="Self.FK_Sotrudniki_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sotrudniki_User" Association="Self.FK_Sotrudniki_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StayStr_Sotrudniki" Association="Self.FK_StayStr_Sotrudniki">
+            <End Role="Sotrudniki" EntitySet="Sotrudniki" />
+            <End Role="StayStr" EntitySet="StayStr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StayStr_Stay" Association="Self.FK_StayStr_Stay">
+            <End Role="Stay" EntitySet="Stay" />
+            <End Role="StayStr" EntitySet="StayStr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StayStr_Volunteers" Association="Self.FK_StayStr_Volunteers">
+            <End Role="Volunteers" EntitySet="Volunteers" />
+            <End Role="StayStr" EntitySet="StayStr" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Volunteers_User" Association="Self.FK_Volunteers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Volunteers" EntitySet="Volunteers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище priutModelContainer" CdmEntityContainer="priutEntities1">
+          <EntitySetMapping Name="Archive">
+            <EntityTypeMapping TypeName="priutModel.Archive">
+              <MappingFragment StoreEntitySet="Archive">
+                <ScalarProperty Name="ID_archive" ColumnName="ID_archive" />
+                <ScalarProperty Name="Service" ColumnName="Service" />
+                <ScalarProperty Name="ID_klienta_FK_" ColumnName="ID_klienta(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataAnim">
+            <EntityTypeMapping TypeName="priutModel.DataAnim">
+              <MappingFragment StoreEntitySet="DataAnim">
+                <ScalarProperty Name="ID_DataAnim" ColumnName="ID_DataAnim" />
+                <ScalarProperty Name="ID_passport_FK_" ColumnName="ID_passport(FK)" />
+                <ScalarProperty Name="ID_MedData_FK_" ColumnName="ID_MedData(FK)" />
+                <ScalarProperty Name="ID_stay_FK_" ColumnName="ID_stay(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HistoryMedical">
+            <EntityTypeMapping TypeName="priutModel.HistoryMedical">
+              <MappingFragment StoreEntitySet="HistoryMedical">
+                <ScalarProperty Name="ID_medical" ColumnName="ID_medical" />
+                <ScalarProperty Name="Diagnosis" ColumnName="Diagnosis" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="Date_End" ColumnName="Date_End" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klient">
+            <EntityTypeMapping TypeName="priutModel.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="ID_klienta" ColumnName="ID_klienta" />
+                <ScalarProperty Name="FIO_kl" ColumnName="FIO_kl" />
+                <ScalarProperty Name="NumberPhoneKl" ColumnName="NumberPhoneKl" />
+                <ScalarProperty Name="ID_user_FK_" ColumnName="ID_user(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MedData">
+            <EntityTypeMapping TypeName="priutModel.MedData">
+              <MappingFragment StoreEntitySet="MedData">
+                <ScalarProperty Name="ID_MedData" ColumnName="ID_MedData" />
+                <ScalarProperty Name="AvailabilityOfVaccinations" ColumnName="AvailabilityOfVaccinations" />
+                <ScalarProperty Name="InitialState" ColumnName="InitialState" />
+                <ScalarProperty Name="ID_medical_FK_" ColumnName="ID_medical(FK)" />
+                <ScalarProperty Name="ID_Sotr_FK_" ColumnName="ID_Sotr(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passport">
+            <EntityTypeMapping TypeName="priutModel.Passport">
+              <MappingFragment StoreEntitySet="Passport">
+                <ScalarProperty Name="ID_passport" ColumnName="ID_passport" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date_reg" ColumnName="Date_reg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="priutModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="NameDol" ColumnName="NameDol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="priutModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrudniki">
+            <EntityTypeMapping TypeName="priutModel.Sotrudniki">
+              <MappingFragment StoreEntitySet="Sotrudniki">
+                <ScalarProperty Name="ID_Sotr" ColumnName="ID_Sotr" />
+                <ScalarProperty Name="FIO_Str" ColumnName="FIO_Str" />
+                <ScalarProperty Name="NumberPhoneStr" ColumnName="NumberPhoneStr" />
+                <ScalarProperty Name="ID_user_FK_" ColumnName="ID_user(FK)" />
+                <ScalarProperty Name="ID_Post_FK_" ColumnName="ID_Post(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stay">
+            <EntityTypeMapping TypeName="priutModel.Stay">
+              <MappingFragment StoreEntitySet="Stay">
+                <ScalarProperty Name="ID_stay" ColumnName="ID_stay" />
+                <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+                <ScalarProperty Name="ID_archive_FK_" ColumnName="ID_archive(FK)" />
+                <ScalarProperty Name="ID_password_FK_" ColumnName="ID_password(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StayStr">
+            <EntityTypeMapping TypeName="priutModel.StayStr">
+              <MappingFragment StoreEntitySet="StayStr">
+                <ScalarProperty Name="ID_StayStr" ColumnName="ID_StayStr" />
+                <ScalarProperty Name="ID_Vol_FK_" ColumnName="ID_Vol(FK)" />
+                <ScalarProperty Name="ID_Sotr_FK_" ColumnName="ID_Sotr(FK)" />
+                <ScalarProperty Name="ID_stay_FK_" ColumnName="ID_stay(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="priutModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="priutModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ID_role_FK_" ColumnName="ID_role(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Volunteers">
+            <EntityTypeMapping TypeName="priutModel.Volunteers">
+              <MappingFragment StoreEntitySet="Volunteers">
+                <ScalarProperty Name="ID_Vol" ColumnName="ID_Vol" />
+                <ScalarProperty Name="FIO_Vol" ColumnName="FIO_Vol" />
+                <ScalarProperty Name="NumberPhoneVol" ColumnName="NumberPhoneVol" />
+                <ScalarProperty Name="ID_user_FK_" ColumnName="ID_user(FK)" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

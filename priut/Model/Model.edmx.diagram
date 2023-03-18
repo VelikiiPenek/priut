@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1470e7bc5a9449918c0a7827e6f89157" Name="Diagram1" ZoomLevel="45">
+        <EntityTypeShape EntityType="priutModel.Archive" Width="1.5" PointX="7.5" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.DataAnim" Width="1.5" PointX="12" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.HistoryMedical" Width="1.5" PointX="8.25" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Klient" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.MedData" Width="1.5" PointX="10.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Passport" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Post" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Role" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Sotrudniki" Width="1.5" PointX="8.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Stay" Width="1.5" PointX="9.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.StayStr" Width="1.5" PointX="12" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.User" Width="1.5" PointX="3" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="priutModel.Volunteers" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <AssociationConnector Association="priutModel.FK_Archive_Klient" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_Stay_Archive" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_DataAnim_MedData" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_DataAnim_Passport" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_DataAnim_Stay" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_MedData_HistoryMedical" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_Klient_User" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_MedData_Sotrudniki" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_Stay_Passport" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_Sotrudniki_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_Sotrudniki_User" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_StayStr_Sotrudniki" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_StayStr_Stay" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_StayStr_Volunteers" ManuallyRouted="false" />
+        <AssociationConnector Association="priutModel.FK_Volunteers_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
