@@ -1,4 +1,5 @@
-﻿using System;
+﻿using priut.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,16 @@ namespace priut
             MedData medData = new MedData();
             this.Close();
             medData.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            VacGrid.ItemsSource = AppData.db.DataAnim.ToList();
+        }
+
+        private void AddBtn(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }

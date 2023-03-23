@@ -35,7 +35,7 @@ namespace priut
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             FirstWindow firstWindow = new FirstWindow();
-            this.Show();
+            this.Close();
             firstWindow.Show();
         }
     }

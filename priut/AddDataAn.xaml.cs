@@ -1,4 +1,5 @@
-﻿using System;
+﻿using priut.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,9 @@ namespace priut
         public AddDataAn()
         {
             InitializeComponent();
+
+            cmbKlient.ItemsSource = AppData.db.Klient.ToList();
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -29,6 +33,21 @@ namespace priut
             DataAn dataAn = new DataAn();
             this.Close();
             dataAn.Show();
+        }
+
+        private void AddAn_Button(object sender, RoutedEventArgs e)
+        {
+            //int A = AgeTxb;
+
+            Passport An = new Passport();
+            An.Name = NameTxb.Text;
+            //An.Age = AgeTxb.Text;
+            //An.Vid = VidTxb.Text;
+
+            AppData.db.Passport.Add(An);
+            AppData.db.SaveChanges();
+            MessageBox.Show("Питомец был добавлен!");
+
         }
     }
 }

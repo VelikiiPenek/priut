@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:local="clr-namespace:priut"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Приют для животных" Height="450" Width="800">
     <Window.Background>
         <ImageBrush ImageSource="image/damion.jpg" />
@@ -25,7 +26,16 @@
                     <TextBox x:Name="search" materialDesign:HintAssist.Hint="Поиск" Margin="-115,-12,115,13"/>
                     <Button HorizontalAlignment="Right" Content="Найти" Margin="0,-12,-112,12"/>
                 </Grid>
-                <DataGrid Height="186"></DataGrid>
+                <DataGrid Height="186" 
+                          x:Name="PerViewGrid" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding ID_Sotr}"/>
+                        <DataGridTextColumn Header="ФИО" Binding="{Binding FIO_Str}"/>
+                        <DataGridTextColumn Header="Должность" Binding="{Binding Post.NameDol}"/>
+                        <DataGridTextColumn Header="Номер телефона" Binding="{Binding NumberPhoneStr}"/>
+                    </DataGrid.Columns>
+                    
+                </DataGrid>
 
                 <Button HorizontalAlignment="Right" Content="назад" Style="{StaticResource MaterialDesignFlatButton}" Click="Button_Click" />
 

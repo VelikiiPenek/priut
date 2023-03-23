@@ -6,6 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         xmlns:local="clr-namespace:priut"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Приют для животных" Height="450" Width="800">
     <Window.Background>
         <ImageBrush ImageSource="image/pich.jpg" />
@@ -27,7 +28,16 @@
                     <Button Width="180" HorizontalAlignment="Right" Margin="0,86,30,132" Content="Продолжить" Click="Button_Click_1"/>
 
 
-                    <DataGrid Width="250" Height="250" HorizontalAlignment="Left" ></DataGrid>
+                    <DataGrid Width="250" Height="250" HorizontalAlignment="Left" 
+                              x:Name="AddMedDataGrid" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Width="*" Binding="{Binding ID_passport}" />
+                            <DataGridTextColumn Header="Кличка" Width="*" Binding="{Binding Name}" />
+                            <DataGridTextColumn Header="Вид" Width="*" Binding="{Binding Vid}" />
+                            
+                        </DataGrid.Columns>
+                        
+                    </DataGrid>
 
 
                 </Grid>

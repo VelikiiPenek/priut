@@ -6,6 +6,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         xmlns:local="clr-namespace:priut"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Приют для животных" Height="450" Width="800">
     <Window.Background>
         <ImageBrush ImageSource="image/damion.jpg" />
@@ -22,16 +23,25 @@
                 <TextBlock Text="Изменение персонала" HorizontalAlignment="Left" FontSize="15" FontWeight="Bold" Margin="0 0 0 20"></TextBlock>
                 <Grid >
 
-                    <TextBox x:Name="TextBoxFio" materialDesign:HintAssist.Hint="Выберете номер животного" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="275,10,25,195" />
-                    <ComboBox Margin="278,66,18,0" VerticalAlignment="Top">
+                    <TextBox x:Name="TextBoxFio" materialDesign:HintAssist.Hint="Выберете номер сотрудника" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="275,10,25,195" />
+                    <ComboBox Margin="278,66,18,0" VerticalAlignment="Top"  >
                         <TextBlock>Ветеринар</TextBlock>
+                        <TextBlock>Менеджер по персоналу</TextBlock>
                         <TextBlock>Админ</TextBlock>
+                        <TextBlock>Клиент</TextBlock>
                     </ComboBox>
                     <TextBox x:Name="Phone" materialDesign:HintAssist.Hint="Введите номер телефона" Margin="278,96,18,118"/>
                     <Button Width="180" HorizontalAlignment="Right" Margin="0,148,25,70" Content="Изменить"/>
                     <Button Width="180" HorizontalAlignment="Right" Margin="0,196,25,22" Content="Удалить"/>
 
-                    <DataGrid Width="250" Height="250" HorizontalAlignment="Left" />
+                    <DataGrid Width="250" Height="250" HorizontalAlignment="Left" 
+                              x:Name="PerChangeGrid" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID_Sotr}"/>
+                            <DataGridTextColumn Header="ФИО" Binding="{Binding FIO_Str}"/>
+                            <DataGridTextColumn Header="Должность" Binding="{Binding Post.NameDol}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
 
                 </Grid>

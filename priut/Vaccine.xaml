@@ -6,6 +6,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"  
         xmlns:local="clr-namespace:priut"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         Title="Приют для животных" Height="450" Width="800">
     <Window.Background>
         <ImageBrush ImageSource="image/pich.jpg" />
@@ -23,11 +24,19 @@
                 <Grid >
 
                     <TextBox x:Name="textNumberAn" materialDesign:HintAssist.Hint="Выберете номер животного" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="275,10,25,195" />
-                    <TextBox x:Name="VacText" materialDesign:HintAssist.Hint="Введите текст" Margin="278,60,18,118"/>
-                    <Button Width="180" HorizontalAlignment="Right" Margin="0,148,25,70" Content="Добавить"/>
+                    <TextBox TextWrapping="Wrap" AcceptsReturn="True" x:Name="VacText" materialDesign:HintAssist.Hint="Введите название прививки" Margin="278,60,18,118"/>
+                    <Button Width="180" HorizontalAlignment="Right" Margin="0,148,25,70" Content="Добавить" Click="AddBtn"/>
                     <Button Width="180" HorizontalAlignment="Right" Margin="0,196,25,22" Content="Удалить"/>
 
-                    <DataGrid Width="250" Height="250" HorizontalAlignment="Left" />
+                    <DataGrid Width="250" Height="250" HorizontalAlignment="Left"
+                             x:Name="VacGrid" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding ID_DataAnim}"/>
+                            <DataGridTextColumn Header="Прививка" Binding="{Binding MedData.NameVaccinations}"/>
+                            <DataGridTextColumn Header="Кличка" Binding="{Binding Passport.Name}"/>
+                            
+                        </DataGrid.Columns>
+                    </DataGrid>
 
 
                 </Grid>

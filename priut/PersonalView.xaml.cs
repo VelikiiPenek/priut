@@ -1,4 +1,5 @@
-﻿using System;
+﻿using priut.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,11 @@ namespace priut
             Personal personal = new Personal();
             this.Close();
             personal.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            PerViewGrid.ItemsSource = AppData.db.Sotrudniki.ToList();
         }
     }
 }

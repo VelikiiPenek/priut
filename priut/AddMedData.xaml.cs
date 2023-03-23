@@ -1,4 +1,5 @@
-﻿using System;
+﻿using priut.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,11 @@ namespace priut
             FirstWindow firstWindow = new FirstWindow();
             this.Close();
             firstWindow.Show();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            AddMedDataGrid.ItemsSource = AppData.db.Passport.ToList();
         }
     }
 }
